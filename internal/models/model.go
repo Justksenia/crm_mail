@@ -15,7 +15,11 @@ type Box interface {
 }
 
 type Folder interface {
-	GetAccountFolder(accountId int)([]types.Folder, error)
+	GetAccountFolders(accountId int)([]types.Folder, error)
+	GetFoldersByAccount(accountId int)([]types.Folder, error)
+	CreateFolder(types.FolderBody)(types.Folder, error)
+	UpdateFolder(types.FolderBody, string)(types.Folder, error) 
+	DeleteFolder(types.FolderBody, string)(error)
 }
 
 type Model struct {

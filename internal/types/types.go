@@ -61,3 +61,13 @@ type ConnectMailBox struct {
 	Username string
 	Id       int
 }
+
+type FolderBody struct {
+	Body FolderBodyData
+	User_Info UserInfo
+}
+
+type FolderBodyData struct {
+	Name      string
+	Color     string
+}

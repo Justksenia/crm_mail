@@ -115,23 +115,21 @@ func (b *BoxPostgres) GetAccountMailFolder(accountId int) (boxWithFolders []type
 	sql = fmt.Sprintf(`SELECT id, name, color, box_id FROM folders WHERE account_id = %d AND box_id != 0 ORDER BY box_id ASC`, accountId) 
 
 	err = b.db.Select(&folders, sql)
-
-	log.Println(boxWithFolders)
 	
 	if err != nil {
 		log.Println(err)
-		return   
+		return   	
 	}
 
 	for i:=0; i< len(boxWithFolders); i++ {
 	  for j:=0; j< len(folders); j++ {
 		if boxWithFolders[i].Id == folders[j].Box_Id {
 			foldersBox = append(foldersBox, folders[j])
+			}
 		}
+		boxWithFolders[i].Folders = foldersBox
+		foldersBox = nil
 	}
-	boxWithFolders[i].Folders = foldersBox
-	foldersBox = nil
-}
-return
+	return
 
 }

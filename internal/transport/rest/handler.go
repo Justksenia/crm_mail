@@ -22,6 +22,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	mail := router.Group("/mail")
 	box := mail.Group("/box")
+	folder := mail.Group("/folder")
 	// x5 := router.Group("/x5")
 
 	router.GET("/ping", func(c *gin.Context) {
@@ -64,7 +65,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	// mails.POST("/update_messages", h.messagesFilter) // фильтрация писем /filter/mail
 	// mails.OPTIONS("/update_messages", h.optionsMessage)
 
-	// mail.POST("/box/:type", h.getMailsBox ) //все ящики type - mail_folders - родные папки из ящика; account_folders - кастомные папки привязанные к аккаунту
 	
 	router.OPTIONS("mail/box/:type", h.optionsMessage)
 	box.POST("/:type", h.getAllMailBox) //все ящики type - mail_folders - родные папки из ящика; account_folders - кастомные папки привязанные к аккаунту
@@ -78,17 +78,17 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	box.GET("monitoring/:type", h.getMailsBox) // мониторинг ящиков из java  :active or not_active
 	router.OPTIONS("mail/box/monitoring/:type", h.optionsMessage)
 
-	// mails.POST("/get_folders", h.getAllFolders) //все папки
-	// mails.OPTIONS("/get_folders", h.optionsMessage)
+	folder.POST("/get_folders", h.getFoldersByAccount) //все папки
+	router.OPTIONS("mail/folder/get_folders", h.optionsMessage)
 
-	// mails.POST("/create_folder", h.createFolder) // создание папки
-	// mails.OPTIONS("/create_folder", h.optionsMessage)
+	folder.POST("/create_folder", h.createFolder) // создание папки
+	router.OPTIONS("/mail/folder/create_folder", h.optionsMessage)
 
-	// mails.PUT("/update_folder/:id", h.updateFolder) // изменение папки по ид
-	// mails.OPTIONS("/update_folder/:id", h.optionsMessage)
+	folder.PUT("/update_folder/:id", h.updateFolder) // изменение папки по ид
+	folder.OPTIONS("/update_folder/:id", h.optionsMessage)
 
-	// mails.DELETE("/folder/:id", h.deleteFolder) //удаление папки по ид
-	// mails.OPTIONS("/folder/:id", h.optionsMessage)
+	folder.DELETE("/folder/:id", h.deleteFolder) //удаление папки по ид
+	folder.OPTIONS("/folder/:id", h.optionsMessage)
 
 	// mails.GET("/tags", h.getAllTags) // получение списка тэгов
 	// mails.OPTIONS("/tags", h.optionsMessage)
