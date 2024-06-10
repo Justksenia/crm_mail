@@ -1,11 +1,11 @@
 package services
 
 import (
-	"fmt"
+	_"fmt"
 	"mail/internal/models"
 	"mail/internal/types"
 
-	"github.com/emersion/go-imap/client"
+	_"github.com/emersion/go-imap/client"
 )
 
 type BoxService struct {
@@ -39,21 +39,21 @@ func (b *BoxService) GetAccountMailFolder(accountId int)(boxsWithFolders []types
 func (b *BoxService) CheckConnect(data types.ConnectMailBox)(message string, result bool){
 
 
-	cl, err := client.DialTLS(data.Host+":993", nil)
+	// cl, err := client.DialTLS(data.Host+":993", nil)
 
-	if err != nil {
-		message = fmt.Sprintf(`ошибка подключения: %v`, err)	
-		result = false
-		return 
-	}
+	// if err != nil {
+	// 	message = fmt.Sprintf(`ошибка подключения: %v`, err)	
+	// 	result = false
+	// 	return 
+	// }
 
-	if err = cl.Login(data.Login, data.Password); err != nil {
-		result = false
-		message = fmt.Sprintf("ошибка логина/пароля: %v", err)	
-		return
-	} else {
+	// if err = cl.Login(data.Login, data.Password); err != nil {
+	// 	result = false
+	// 	message = fmt.Sprintf("ошибка логина/пароля: %v", err)	
+	// 	return
+	// } else {
 		result = true
 		message = "можно коннектиться"
-	}
+	//}
 	return
 }

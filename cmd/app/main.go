@@ -1,7 +1,12 @@
 package main
 
-import "mail/internal/app"
+import (
+	_"log"
+	 "mail/internal/app"
+	_ "mail/internal/types"
+)
 
 func main() {
 	app.Run()
+
 }
