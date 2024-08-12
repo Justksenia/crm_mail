@@ -5,6 +5,8 @@ import (
 	"mail/internal/types"
 )
 
+//go:generate mockgen -source=service.go -destination=mocks/mock.go
+
 type Box interface {
 	GetMailsBox(typeBox string) ([]types.FullBox, error)
 	UpdateMailBox(boxId string, body types.BodyBoxUpdate)([]types.Box, error)

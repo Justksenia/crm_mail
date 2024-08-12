@@ -28,6 +28,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, "pong")
 	})
+	router.POST("/p", func(c *gin.Context) {
+		c.JSON(200, "pong")
+	})
 
 	// mails.POST("/", h.getAllMessages) //все письма, без пагинации
 	// mails.OPTIONS("/", h.optionsMessage)
@@ -90,6 +93,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	folder.DELETE("/folder/:id", h.deleteFolder) //удаление папки по ид
 	folder.OPTIONS("/folder/:id", h.optionsMessage)
 
+	
+
 	// mails.GET("/tags", h.getAllTags) // получение списка тэгов
 	// mails.OPTIONS("/tags", h.optionsMessage)
 
@@ -109,7 +114,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	// mails.POST("/box/create", h.addMailBox)  // добавление нового ящика
 	// mails.OPTIONS("/box/create", h.optionsMessage)
 	
-	box.POST("/box/check_connect", h.checkConnetcMailBox)  // проверка подключения ящика
+	box.POST("/check_connect", h.checkConnetcMailBox)  // проверка подключения ящика
 	router.OPTIONS("mail/box/check_connect", h.optionsMessage)
 
 	// mails.POST("/userbox", h.createUserBox)

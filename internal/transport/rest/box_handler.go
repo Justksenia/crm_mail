@@ -63,7 +63,8 @@ func (h *Handler) createBox(c *gin.Context) {
 		return
 	}
 	
-	createdBox, err := h.services.CreateMailBox(body)
+	box, err := h.services.CreateMailBox(body)
+	log.Println(box)
 
 	if err != nil {
 		error := fmt.Sprintf(`err: %v`, err)
@@ -71,7 +72,7 @@ func (h *Handler) createBox(c *gin.Context) {
 	}
 
 	c.JSON(201, map[string]interface{}{
-		"data": createdBox,
+		"success": true,
 	})
 }
 
@@ -126,10 +127,7 @@ func (h *Handler) checkConnetcMailBox(c *gin.Context) {
 		return
 	}
 
-	message, result := h.services.CheckConnect(data)
-	c.JSON(200, map[string]interface{}{
-		"message": message,
-		"result": result,
-
-	})
+	message, err := h.services.CheckConnect(data)
+	log.Println(message, err)
+	c.JSON(200, 1)
 }

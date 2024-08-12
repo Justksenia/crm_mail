@@ -44,14 +44,14 @@ type BodyBoxUpdate struct {
 }
 
 type CreateBoxBody struct {
-	Body BoxData
-	User_Info UserInfo
+	Body BoxData	`json:"data"`
+	User_Info UserInfo `json:"user_info"`
 }
 
 type BoxData struct {
-	Name     string 
-	Color    string 
-	AccountJson string 
+	Name     string  `json:"name"`
+	Color    string	`json:"color"`
+	AccountJson string `json:"account_json"`
 }
 
 type ConnectMailBox struct {
@@ -71,3 +71,9 @@ type FolderBodyData struct {
 	Name      string
 	Color     string
 }
+
+var (
+	Pa int
+	Ra string
+	s string
+)
