@@ -4,12 +4,18 @@ go 1.19
 
 require (
 	github.com/gin-gonic/gin v1.9.1
-	github.com/jmoiron/sqlx v1.3.5
+	github.com/jmoiron/sqlx v1.4.0
 	github.com/joho/godotenv v1.5.1
 	github.com/lib/pq v1.10.9
 )
 
-require github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21 // indirect
+require (
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/stretchr/testify v1.9.0 // indirect
+	github.com/zhashkevych/go-sqlxmock v1.5.2-0.20201023121933-f973d0041cfc // indirect
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
